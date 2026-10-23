@@ -54,7 +54,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--thinking", choices=("enabled", "disabled"), help="Optional thinking-mode setting")
     parser.add_argument("--reasoning-effort", help="Optional model-supported reasoning effort")
-    parser.add_argument("--max-attachment-chars", type=int, default=200_000, help="Maximum characters read from each attachmment")
+    parser.add_argument("--max-attachment-chars", type=int, default=200_000, help="Maximum characters read from each attachment")
     parser.add_argument("--timeout", type=int, default=180, help="Request timeout in seconds")
     parser.add_argument("--output-dir", type=Path, help="Output directory; defaults to results/<timestamp>_<title>")
     parser.add_argument("--dry-run", action="store_true", help="Print the exact request JSON without calling the API")
@@ -62,7 +62,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
-    if hasattr(ys.stdout, "reconfigure"):
+    if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     args = parse_args()
     if args.max_attachment_chars < 1:
